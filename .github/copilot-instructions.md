@@ -2,19 +2,25 @@
 
 ## Repository Overview
 
-Companion code samples for a 9-part blog series on using [Entire.io](https://entire.io) across the full Power Platform code-first development stack. Each numbered sub-folder is a self-contained sample:
+Companion code samples for a blog series on using [Entire.io](https://entire.io) across the full Power Platform code-first development stack.
 
 | Folder | Topic |
 |---|---|
-| `38-form-scripts/` | Form Scripts & Web Resources |
-| `39-plugins-custom-apis/` | Dataverse Plugins & Custom APIs (.NET/C#) |
-| `40-pcf-controls/` | PCF Controls (Node.js) |
-| `41-azure-functions/` | Azure Functions |
+| `src/webresources/` | Form Scripts & Web Resources (Article 38) |
+| `src/plugins/` | Dataverse Plugins (.NET Framework 4.6.2 / C#) (Article 39) |
+| `src/customapis/` | Custom APIs (.NET/C#) (Article 39) |
+| `src/pcfs/` | PCF Controls (Node.js) (Article 40) |
+| `src/codeapps/` | Code Apps — placeholder, no sample in this series |
+| `src/azurefunctions/` | Azure Functions (Article 41) |
+| `terraform/` | Infrastructure — Function App, Managed Identity |
+| `entire-config/` | Security & Governance (Article 44) |
+| `tests/` | Unit tests mirroring `src/` (xUnit + Jest) |
 
 ## Prerequisites
 
 - Node.js 22+, npm
 - .NET 8 SDK
+- .NET Framework 4.6.2 (for Dataverse plugins)
 - Power Platform CLI: `dotnet tool install -g Microsoft.PowerApps.CLI.Tool`
 - Entire CLI: `npm install -g entire` then `entire login`
 - Azure Functions Core Tools v4 (for `41-azure-functions/`)

@@ -1,13 +1,13 @@
 using System;
 using Microsoft.Xrm.Sdk;
 
-namespace AccountPlugins
+namespace EntireSamples.Plugins
 {
     /// <summary>
-    /// Pre-operation plugin on Account Create.
-    /// Validates that the account name is not empty and sets the account number
-    /// to "ACC-" followed by today's date (yyyyMMdd).
-    ///
+    /// Pre-operation plugin for the Account Create message.
+    /// Validates that the account name is not empty and sets the
+    /// account number to "ACC-" followed by today's date (yyyyMMdd).
+    /// 
     /// Registration:
     ///   Entity:   account
     ///   Message:  Create
@@ -21,18 +21,21 @@ namespace AccountPlugins
             var context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
             var tracingService = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
 
-            if (context.MessageName != "Create" || context.Stage != 20)
+            if (context.MessageName != "Create" || context.PrimaryEntityName != "account")
                 return;
 
-            if (!(context.InputParameters["Target"] is Entity target) || target.LogicalName != "account")
+            if (context.Stage != 20)
                 return;
 
-            tracingService.Trace("AccountPreCreatePlugin: executing for account create");
+            if (!(context.InputParameters["Target"] is Entity target))
+                return;
+
+            tracingService.Trace("AccountPreCreatePlugin: executing for account Create.");
 
             ValidateAccountName(target);
-            SetAccountNumber(target);
+            SetAccountNumberPrefix(target);
 
-            tracingService.Trace("AccountPreCreatePlugin: completed successfully");
+            tracingService.Trace("AccountPreCreatePlugin: completed successfully.");
         }
 
         private static void ValidateAccountName(Entity target)
@@ -40,11 +43,10 @@ namespace AccountPlugins
             var name = target.GetAttributeValue<string>("name");
 
             if (string.IsNullOrWhiteSpace(name))
-                throw new InvalidPluginExecutionException(
-                    "Account name is required and cannot be empty.");
+                throw new InvalidPluginExecutionException("Account name cannot be empty.");
         }
 
-        private static void SetAccountNumber(Entity target)
+        private static void SetAccountNumberPrefix(Entity target)
         {
             var dateSuffix = DateTime.UtcNow.ToString("yyyyMMdd");
             target["accountnumber"] = $"ACC-{dateSuffix}";
