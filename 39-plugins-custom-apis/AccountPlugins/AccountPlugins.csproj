@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <AssemblyName>AccountPlugins</AssemblyName>
+    <RootNamespace>AccountPlugins</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.52" />
+  </ItemGroup>
+
+</Project>
