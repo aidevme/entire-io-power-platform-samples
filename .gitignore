@@ -6,5 +6,5 @@
 __pycache__/
 *.pyc
 solutions/*.zip
-plugins/**/bin/
-plugins/**/obj/
+**/bin/
+**/obj/
