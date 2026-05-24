@@ -18,24 +18,46 @@ namespace EntireSamples.Plugins
     {
         public void Execute(IServiceProvider serviceProvider)
         {
-            var context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
+            if (serviceProvider == null)
+                throw new ArgumentNullException(nameof(serviceProvider));
+
             var tracingService = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
 
-            if (context.MessageName != "Create" || context.PrimaryEntityName != "account")
-                return;
+            try
+            {
+                var context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
 
-            if (context.Stage != 20)
-                return;
+                if (context.MessageName != "Create" || context.PrimaryEntityName != "account")
+                    return;
 
-            if (!(context.InputParameters["Target"] is Entity target))
-                return;
+                if (context.Stage != 20)
+                    return;
 
-            tracingService.Trace("AccountPreCreatePlugin: executing for account Create.");
+                if (!context.InputParameters.ContainsKey("Target") ||
+                    !(context.InputParameters["Target"] is Entity target))
+                {
+                    tracingService.Trace("AccountPreCreatePlugin: Target parameter missing or invalid — skipping.");
+                    return;
+                }
 
-            ValidateAccountName(target);
-            SetAccountNumberPrefix(target);
+                tracingService.Trace("AccountPreCreatePlugin: executing for account Create.");
 
-            tracingService.Trace("AccountPreCreatePlugin: completed successfully.");
+                ValidateAccountName(target);
+                SetAccountNumberPrefix(target);
+
+                tracingService.Trace("AccountPreCreatePlugin: completed successfully.");
+            }
+            catch (InvalidPluginExecutionException)
+            {
+                // Re-throw business rule violations directly — they surface as user-facing errors.
+                throw;
+            }
+            catch (Exception ex)
+            {
+                tracingService.Trace($"AccountPreCreatePlugin: unexpected error — {ex.GetType().Name}: {ex.Message}");
+                throw new InvalidPluginExecutionException(
+                    $"An unexpected error occurred in AccountPreCreatePlugin: {ex.Message}", ex);
+            }
         }
 
         private static void ValidateAccountName(Entity target)
