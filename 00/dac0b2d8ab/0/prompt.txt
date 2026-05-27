@@ -1,0 +1,53 @@
+/init
+
+---
+
+entire version
+
+---
+
+scoop bucket add entire https://github.com/entireio/scoop-bucket.git
+
+---
+
+scoop install entire/cli
+
+---
+
+entire version
+
+---
+
+entire login
+
+---
+
+<task-notification>
+<task-id>bizzozlm6</task-id>
+<tool-use-id>toolu_01DtmfuxXDPVXjQ9HCvQTFZv</tool-use-id>
+<output-file>C:\Users\zsolt\AppData\Local\Temp\claude\C--aidevme-samples-entire-io-power-platform-samples\2a4cf682-1514-4e4a-8c9a-3eb860b3ea4f\tasks\bizzozlm6.output</output-file>
+<status>completed</status>
+<summary>Background command "entire login" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+entire auth status
+
+---
+
+entire enable
+
+---
+
+entire agent list
+
+---
+
+Create a new Dataverse plugin class for the account entity's pre-operation create 
+message that validates the account name is not empty and sets the account number 
+prefix to "ACC-" followed by today's date.
+
+---
+
+git add .

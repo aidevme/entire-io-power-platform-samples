@@ -1,0 +1,29 @@
+{
+  "cli_version": "0.6.2",
+  "checkpoint_id": "00dac0b2d8ab",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "CLAUDE.md",
+    "docs/DOTNET-SKILLS.md",
+    "docs/prompt-samples/plugin-prompt.md",
+    "src/plugins/AccountPreCreatePlugin.cs",
+    "terraform/README.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/00/dac0b2d8ab/0/metadata.json",
+      "transcript": "/00/dac0b2d8ab/0/full.jsonl",
+      "content_hash": "/00/dac0b2d8ab/0/content_hash.txt",
+      "prompt": "/00/dac0b2d8ab/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 67,
+    "cache_creation_tokens": 88750,
+    "cache_read_tokens": 1513692,
+    "output_tokens": 6868,
+    "api_call_count": 41
+  }
+}
