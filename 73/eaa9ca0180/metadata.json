@@ -1,0 +1,25 @@
+{
+  "cli_version": "0.6.2",
+  "checkpoint_id": "73eaa9ca0180",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "src/plugins/AccountPreCreatePlugin.cs"
+  ],
+  "sessions": [
+    {
+      "metadata": "/73/eaa9ca0180/0/metadata.json",
+      "transcript": "/73/eaa9ca0180/0/full.jsonl",
+      "content_hash": "/73/eaa9ca0180/0/content_hash.txt",
+      "prompt": "/73/eaa9ca0180/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 25,
+    "cache_creation_tokens": 35180,
+    "cache_read_tokens": 437219,
+    "output_tokens": 4520,
+    "api_call_count": 15
+  }
+}
