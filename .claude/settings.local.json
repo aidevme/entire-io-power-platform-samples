@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(entire *)",
+      "Bash(scoop bucket *)",
+      "Bash(scoop install *)",
+      "Bash(git *)"
+    ]
+  }
+}

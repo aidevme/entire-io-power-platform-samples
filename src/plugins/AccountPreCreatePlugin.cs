@@ -7,7 +7,7 @@ namespace EntireSamples.Plugins
     /// Pre-operation plugin for the Account Create message.
     /// Validates that the account name is not empty and sets the
     /// account number to "ACC-" followed by today's date (yyyyMMdd).
-    /// 
+    ///
     /// Registration:
     ///   Entity:   account
     ///   Message:  Create
